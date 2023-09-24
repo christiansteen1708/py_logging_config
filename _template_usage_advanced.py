@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#! /usr/bin/env python3
+
 """Template for advanced logging configuration.
 Provides two arguments: --loglevel and --logfile
 Further provides more dynamic arguments (--foo, --bar, ...)
