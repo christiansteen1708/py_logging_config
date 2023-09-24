@@ -1,0 +1,10 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+#log
+log/*
+!log/.placeholder
+#vs-code-workspace
+*code-workspace 
+*.vscode
+
