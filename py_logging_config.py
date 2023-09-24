@@ -1,7 +1,8 @@
 """Base config for logging with arguments for logfile and loglevel"""
 from datetime import datetime
-import os #username
-import socket #hostname
+import os
+import sys
+import socket
 import logging
 import argparse
 
@@ -25,9 +26,10 @@ def log_per_argument(description=None, default_loglevel="debug",
         }
         try:
             level_choice = level_config[loglevel]
-        except:
-            print(f"not a valid log level, using default {default_loglevel}")
-            level_choice = level_config[default_loglevel]
+        except Exception:
+            print(f"'{loglevel}' is not a valid loglevel. \nValid values are: {', '.join(level_config)}.\nExiting", file=sys.stderr)         
+            sys.exit(1)
+
 
         # set basicConfig for logging
         logging.basicConfig(
@@ -37,6 +39,7 @@ def log_per_argument(description=None, default_loglevel="debug",
             format='%(asctime)s %(levelname)-8s %(message)s',
             datefmt='%Y-%m-%d %H:%M:%S'
         )
+
 
 
     parser = argparse.ArgumentParser(description=description)
